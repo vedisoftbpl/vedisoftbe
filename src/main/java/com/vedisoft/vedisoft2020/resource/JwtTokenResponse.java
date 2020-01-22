@@ -1,4 +1,4 @@
-package com.vedisoft.vedisoft2020.jwt.resource;
+package com.vedisoft.vedisoft2020.resource;
 
 import java.io.Serializable;
 
