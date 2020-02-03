@@ -69,7 +69,7 @@ public class Person implements Serializable {
 	@Column(length=200)
 	private String locality;
 
-	@Column(length=20)
+	@Column(length=45)
 	private String password;
 
 	@Column(name="person_name", length=20)

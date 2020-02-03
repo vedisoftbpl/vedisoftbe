@@ -20,8 +20,8 @@ public class UserDetailsDao implements IUserDetailsDao {
 	
 	public Person getActiveUser(String username) {
 		Person activePersonDetails = new Person();
-		short active = 1;
-		List<?> list = entityManager.createQuery("SELECT u FROM Person u WHERE username=? and active=?")
+		byte active = 1;
+		List<?> list = entityManager.createQuery("SELECT u FROM Person u WHERE username=?1 and active=?2")
 				.setParameter(1, username).setParameter(2, active).getResultList();
 		if(!list.isEmpty()) {
 			activePersonDetails = (Person)list.get(0);

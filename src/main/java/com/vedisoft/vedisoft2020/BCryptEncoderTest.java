@@ -8,7 +8,7 @@ public class BCryptEncoderTest {
 		// TODO Auto-generated method stub
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		for(int i = 0; i<=10; i++) {
-			String encodedString = encoder.encode("aashrayjain") ;
+			String encodedString = encoder.encode("7389330515") ;
 			System.out.println(encodedString) ;
 		}
 	}
