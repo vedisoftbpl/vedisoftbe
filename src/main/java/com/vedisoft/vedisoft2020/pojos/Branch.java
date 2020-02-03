@@ -64,8 +64,8 @@ public class Branch implements Serializable {
 	@Column(length=20)
 	private String locality;
 
-	@Column(name="long", length=45)
-	private String long_;
+	@Column(name="longi", length=45)
+	private String longi;
 
 	@Column(name="multiple_courses", length=1000)
 	private String multipleCourses;
@@ -227,11 +227,11 @@ public class Branch implements Serializable {
 	}
 
 	public String getLong_() {
-		return this.long_;
+		return this.longi;
 	}
 
-	public void setLong_(String long_) {
-		this.long_ = long_;
+	public void setLong_(String longi) {
+		this.longi = longi;
 	}
 
 	public String getMultipleCourses() {
