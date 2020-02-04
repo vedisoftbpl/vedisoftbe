@@ -319,7 +319,7 @@ CREATE TABLE `person` (
   `dol` date DEFAULT '1111-11-11',
   `email` varchar(40) DEFAULT NULL,
   `username` varchar(20) DEFAULT NULL,
-  `password` varchar(20) DEFAULT NULL,
+  `password` varchar(100) DEFAULT NULL,
   `key1` varchar(20) DEFAULT NULL,
   `active` tinyint(4) DEFAULT NULL,
   `card_no` varchar(20) DEFAULT NULL,
@@ -343,6 +343,7 @@ CREATE TABLE `person` (
 
 LOCK TABLES `person` WRITE;
 /*!40000 ALTER TABLE `person` DISABLE KEYS */;
+INSERT INTO `person` VALUES (1,'ab','Aashray Jain','developer',NULL,'7389330515','katni','402','df','bhopal','bhopal','mp','1999-09-10','2016-06-12','1111-11-11','aashrayjainkatni@gmail.com','aashrayjain','$2a$10$fQS861GqtmQWU8GGgFuFt.58dfydVCAyjmiElSvXgIgjUn.BXoza6','admin',1,'as',12,'2016-06-12',12,'2016-06-12',NULL);
 /*!40000 ALTER TABLE `person` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -564,4 +565,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-26 13:08:50
+-- Dump completed on 2020-02-04 13:09:57
