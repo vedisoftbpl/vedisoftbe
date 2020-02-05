@@ -23,19 +23,20 @@ public class BranchesController {
 	@Autowired
 	private IBranchService branchService;
 	
-	@GetMapping("branches")
+	@GetMapping("/branches")
 	public ResponseEntity<List<Branch>> getAllBranches() {
+		System.out.println("inside branches");
 		List<Branch> list = branchService.getAllBranches();
 		return new ResponseEntity<List<Branch>>(list, HttpStatus.OK);
 	}
 	
-	@GetMapping("branch/{id}")
+	@GetMapping("/branch/{id}")
 	public ResponseEntity<Branch> getBranchById(@PathVariable("id") Integer id) {
 		Branch branch = branchService.getBranchById(id);
 		return new ResponseEntity<Branch>(branch, HttpStatus.OK);
 	}
 	
-	@PostMapping("branch/formSubmit")
+	@PostMapping("/branch/formSubmit")
 	public ResponseEntity<Branch> saveBranch(@RequestBody Branch branch){
 		Branch br = branchService.saveBranch(branch);
 		return new ResponseEntity<Branch>(branch, HttpStatus.OK);
