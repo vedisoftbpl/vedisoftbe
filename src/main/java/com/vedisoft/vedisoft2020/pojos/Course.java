@@ -17,7 +17,7 @@ public class Course implements Serializable {
 
 	@Id
 	@Column(unique=true, nullable=false)
-	private int id;
+	private Long id;
 
 	@Column(name="certi_title", length=1000)
 	private String certiTitle;
@@ -37,11 +37,11 @@ public class Course implements Serializable {
 	public Course() {
 	}
 
-	public int getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
