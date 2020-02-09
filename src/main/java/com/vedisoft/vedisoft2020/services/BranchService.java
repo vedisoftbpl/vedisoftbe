@@ -14,27 +14,21 @@ public class BranchService implements IBranchService {
 	private IBranchDetailsDao branchDetailDao;
 	
 	@Override
-	public Branch saveBranch(Branch branch) {
-		// TODO Auto-generated method stub
-		int id = branch.getBranchId();
-		if(id==-1) {
-			return branchDetailDao.addNewBranch(branch);
-		}
-		else {
-			return branchDetailDao.updateBranchById(branch);
-		}
-	}
-
-	@Override
 	public List<Branch> getAllBranches() {
-		// TODO Auto-generated method stub
 		return branchDetailDao.getAllBranches();
 	}
 
 	@Override
-	public Branch getBranchById(int id) {
-		// TODO Auto-generated method stub
+	public Branch getBranchById(Long id) {
 		return branchDetailDao.getBranchById(id);
 	}
+	
+	@Override
+	public Branch createBranch(Branch branch) {
+		return branchDetailDao.createBranch(branch);
+		
+	}
+
+	
 
 }

@@ -20,7 +20,7 @@ public class Session implements Serializable {
 
 	@Id
 	@Column(name="session_id", unique=true, nullable=false)
-	private int sessionId;
+	private Long sessionId;
 
 	@Column(length=16)
 	private String command;
@@ -194,11 +194,11 @@ public class Session implements Serializable {
 	public Session() {
 	}
 
-	public int getSessionId() {
+	public Long getSessionId() {
 		return this.sessionId;
 	}
 
-	public void setSessionId(int sessionId) {
+	public void setSessionId(Long sessionId) {
 		this.sessionId = sessionId;
 	}
 

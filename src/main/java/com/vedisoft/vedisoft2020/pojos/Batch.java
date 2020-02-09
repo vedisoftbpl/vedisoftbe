@@ -18,10 +18,10 @@ public class Batch implements Serializable {
 
 	@Id
 	@Column(name="batch_id", unique=true, nullable=false)
-	private int batchId;
+	private Long batchId;
 
 	@Column(name="branch_id")
-	private int branchId;
+	private Long branchId;
 
 	@Column(length=45)
 	private String code;
@@ -89,19 +89,19 @@ public class Batch implements Serializable {
 	public Batch() {
 	}
 
-	public int getBatchId() {
+	public Long getBatchId() {
 		return this.batchId;
 	}
 
-	public void setBatchId(int batchId) {
+	public void setBatchId(Long batchId) {
 		this.batchId = batchId;
 	}
 
-	public int getBranchId() {
+	public Long getBranchId() {
 		return this.branchId;
 	}
 
-	public void setBranchId(int branchId) {
+	public void setBranchId(Long branchId) {
 		this.branchId = branchId;
 	}
 

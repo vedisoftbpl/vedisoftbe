@@ -17,8 +17,9 @@ public class Branch implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue
 	@Column(name="branch_id", unique=true, nullable=false)
-	private int branchId;
+	private Long branchId;
 
 	@Column(name="branch_contact_no", length=20)
 	private String branchContactNo;
@@ -106,11 +107,11 @@ public class Branch implements Serializable {
 	public Branch() {
 	}
 
-	public int getBranchId() {
+	public Long getBranchId() {
 		return this.branchId;
 	}
 
-	public void setBranchId(int branchId) {
+	public void setBranchId(Long branchId) {
 		this.branchId = branchId;
 	}
 

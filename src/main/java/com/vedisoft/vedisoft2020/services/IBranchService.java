@@ -5,7 +5,8 @@ import java.util.List;
 import com.vedisoft.vedisoft2020.pojos.Branch;
 
 public interface IBranchService {
-	Branch saveBranch(Branch branch);
+	
+	Branch createBranch(Branch branch);
+	Branch getBranchById(Long id);
 	List<Branch> getAllBranches();
-	Branch getBranchById(int id);
 }
