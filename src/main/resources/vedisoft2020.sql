@@ -87,7 +87,7 @@ CREATE TABLE `branches` (
   `lat` varchar(45) DEFAULT NULL,
   `longi` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`branch_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,6 +96,7 @@ CREATE TABLE `branches` (
 
 LOCK TABLES `branches` WRITE;
 /*!40000 ALTER TABLE `branches` DISABLE KEYS */;
+INSERT INTO `branches` VALUES (1,'vedisoft','mp','102','near mahindral','sargam','Bhopal','M.P',1,'7347896541','C++','1999-09-10',1,'2018-09-10',1,'2019-09-10','avc',1,'23.2524° N','77.4646° E'),(2,'vedisoft','mp','102','near mahindral','sargam','Chennai','M.P',2,'7389330515','JAVA','1999-09-10',1,'2018-09-10',1,'2019-09-10','avc',1,'23.2524° N','77.4646° E'),(3,'vedisoft','mp','102','near mahindral','sargam','Bhopal','M.P',3,'7389330515','Spring,Hibernate','1999-09-10',1,'2018-09-10',1,'2019-09-10','avc',1,'23.2524° N','77.4646° E'),(4,'vedisoft','mp','102','near mahindral','sargam','Bhopal','M.P',3,'7389330515','Angular','1999-09-10',1,'2018-09-10',1,'2019-09-10','avc',1,'23.2524° N','77.4646° E'),(5,'vedisoft','mp','102','near mahindral','sargam','Bhopal','M.P',4,'7398756978','Machine Learning,DL','1999-09-10',1,'2018-09-10',1,'2019-09-10','avc',1,'23.2524° N','77.4646° E');
 /*!40000 ALTER TABLE `branches` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -160,6 +161,7 @@ CREATE TABLE `college_list` (
 
 LOCK TABLES `college_list` WRITE;
 /*!40000 ALTER TABLE `college_list` DISABLE KEYS */;
+INSERT INTO `college_list` VALUES (1,'Lnct','ln','Bhopal','1st');
 /*!40000 ALTER TABLE `college_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -186,6 +188,7 @@ CREATE TABLE `course` (
 
 LOCK TABLES `course` WRITE;
 /*!40000 ALTER TABLE `course` DISABLE KEYS */;
+INSERT INTO `course` VALUES (1,'Java','jav','JAVA DEVELOPER',3),(3,'Full Stack','DEVops','FULL STACK DEVELOPER',8);
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -224,6 +227,32 @@ CREATE TABLE `fees` (
 LOCK TABLES `fees` WRITE;
 /*!40000 ALTER TABLE `fees` DISABLE KEYS */;
 /*!40000 ALTER TABLE `fees` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `gst_detail`
+--
+
+DROP TABLE IF EXISTS `gst_detail`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `gst_detail` (
+  `id` int(11) NOT NULL,
+  `from_date` date DEFAULT NULL,
+  `cgst` float DEFAULT NULL,
+  `sgst` float DEFAULT NULL,
+  `status` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gst_detail`
+--
+
+LOCK TABLES `gst_detail` WRITE;
+/*!40000 ALTER TABLE `gst_detail` DISABLE KEYS */;
+/*!40000 ALTER TABLE `gst_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -430,6 +459,7 @@ CREATE TABLE `session` (
 
 LOCK TABLES `session` WRITE;
 /*!40000 ALTER TABLE `session` DISABLE KEYS */;
+INSERT INTO `session` VALUES (1,'abc','1999-09-10','1999-09-10',12,NULL,13,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,'abc','1999-09-10','1998-08-16',14975,NULL,13,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -472,6 +502,7 @@ CREATE TABLE `student` (
   `father_name` varchar(45) DEFAULT NULL,
   `parent_occupation` varchar(45) DEFAULT NULL,
   `pno` varchar(255) DEFAULT NULL,
+  `img` longblob,
   PRIMARY KEY (`registration_id`),
   KEY `FKd0ada08nji7l9tpoqqeq3fsfo` (`branch_id`),
   KEY `FKad8k2y991820i6c5yygen7vc2` (`college_id`),
@@ -565,4 +596,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-04 13:09:57
+-- Dump completed on 2020-02-10 16:11:28
