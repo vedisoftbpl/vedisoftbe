@@ -23,7 +23,6 @@ import com.vedisoft.vedisoft2020.services.ISessionService;
 @CrossOrigin(origins="http://localhost:4200")
 @RequestMapping("vedisoft")
 public class SessionsController {
-	
 	@Autowired
 	private ISessionService sessionService;
 	

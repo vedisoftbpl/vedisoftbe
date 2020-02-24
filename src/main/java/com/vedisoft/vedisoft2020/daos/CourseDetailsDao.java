@@ -32,6 +32,10 @@ public class CourseDetailsDao implements ICourseDetailsDao {
 	@Override
 	public Course createCourse(Course course) {
 		// TODO Auto-generated method stub
+		if(course.getId() == -1) {
+			Long i = (long)0;
+			course.setId(i);
+		}
 		return courseJpaRepository.save(course);
 	}
 

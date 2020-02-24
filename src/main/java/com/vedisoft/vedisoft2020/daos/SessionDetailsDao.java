@@ -38,6 +38,10 @@ public class SessionDetailsDao implements ISessionDetailsDao{
 	@Override
 	public Session createSession(Session session) {
 		// TODO Auto-generated method stub
+		if(session.getSessionId()==-1) {
+			long i = (long) 0;
+			session.setSessionId(i);
+		}
 		return sessionJpaRepository.save(session);
 	}
 	

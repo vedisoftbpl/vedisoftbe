@@ -35,6 +35,12 @@ public class CollegeList implements Serializable {
 	@OneToMany(mappedBy="collegeList")
 	private List<Student> students;
 
+	@Override
+	public String toString() {
+		return "CollegeList [id=" + id + ", city=" + city + ", group=" + group + ", name=" + name + ", prefix=" + prefix
+				+ "]";
+	}
+
 	public CollegeList() {
 	}
 

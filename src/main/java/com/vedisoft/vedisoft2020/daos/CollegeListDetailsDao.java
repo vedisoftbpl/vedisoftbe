@@ -2,6 +2,7 @@ package com.vedisoft.vedisoft2020.daos;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ public class CollegeListDetailsDao implements ICollegeListDetailsDao {
 
 	@Autowired
 	private CollegeListJpaRepository collegeListJpaRepository;
+	@Autowired
+	private EntityManager entityManager;
 	
 	@Override
 	public List<CollegeList> getAllCollegeList() {
@@ -32,10 +35,14 @@ public class CollegeListDetailsDao implements ICollegeListDetailsDao {
 	@Override
 	public CollegeList createCollegeList(CollegeList collegeList) {
 		// TODO Auto-generated method stub
-//		for(CollegeListJpaRepository cllgList : collegeList ) {
-//			
-//		}
+		System.out.println(collegeList);
+		if(collegeList.getId()==-1) {
+			collegeList.setId((long)0);
+		}
+		System.out.println(collegeList);
+//		entityManager.persist(collegeList);
 		return collegeListJpaRepository.save(collegeList);
+//		return collegeList;
 	}
 	
 }
