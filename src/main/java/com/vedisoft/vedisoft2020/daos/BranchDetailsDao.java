@@ -34,6 +34,7 @@ public class BranchDetailsDao implements IBranchDetailsDao{
 	
 	@Override
 	public Branch createBranch(Branch branch) {
+		branch.setBranchId(0L);
 		return branchJpaRepository.save(branch);
 	}
 

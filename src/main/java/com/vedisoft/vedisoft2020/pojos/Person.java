@@ -18,7 +18,7 @@ public class Person implements Serializable {
 
 	@Id
 	@Column(name="person_id", unique=true, nullable=false)
-	private int personId;
+	private Long personId;
 
 	private byte active;
 
@@ -107,11 +107,11 @@ public class Person implements Serializable {
 	public Person() {
 	}
 
-	public int getPersonId() {
+	public Long getPersonId() {
 		return this.personId;
 	}
 
-	public void setPersonId(int personId) {
+	public void setPersonId(Long personId) {
 		this.personId = personId;
 	}
 

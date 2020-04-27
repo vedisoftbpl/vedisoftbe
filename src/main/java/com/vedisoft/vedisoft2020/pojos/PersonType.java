@@ -17,7 +17,7 @@ public class PersonType implements Serializable {
 
 	@Id
 	@Column(unique=true, nullable=false)
-	private int pid;
+	private Long pid;
 
 	@Column(name="created_by")
 	private int createdBy;
@@ -46,11 +46,11 @@ public class PersonType implements Serializable {
 	public PersonType() {
 	}
 
-	public int getPid() {
+	public Long getPid() {
 		return this.pid;
 	}
 
-	public void setPid(int pid) {
+	public void setPid(Long pid) {
 		this.pid = pid;
 	}
 
