@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.vedisoft.vedisoft2020.jparepository.BatchJpaRepository;
 import com.vedisoft.vedisoft2020.pojos.Batch;
+import com.vedisoft.vedisoft2020.pojos.Course;
 
 @Repository
 @Transactional
@@ -42,6 +43,17 @@ public class BatchDetailsDao implements IBatchDetailsDao {
 		// TODO Auto-generated method stub
 		Batch batch = getBatchById(id);
 		batchJpaRepository.deleteById(id);
+		return batch;
+	}
+
+	@Override
+	public Batch trail() {
+		// TODO Auto-generated method stub
+		Course course = new CourseDetailsDao().getCourseById((long)1);
+		Batch batch = new Batch((long)0,(long)0,"2019",course);
+		
+		System.out.println(course.getId());
+		batchJpaRepository.save(batch);
 		return batch;
 	}
 

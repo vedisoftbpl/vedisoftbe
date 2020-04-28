@@ -269,4 +269,15 @@ public class Batch implements Serializable {
 		this.studentBatch = studentBatch;
 	}
 
+	public Batch(Long batchId, Long branchId, String code, Course course) {
+		super();
+		this.batchId = batchId;
+	//	this.branchId = branchId;
+		this.code = code;
+		this.course = course;
+	}
+	
+	
+	
+
 }

@@ -20,6 +20,12 @@ public class CourseDetailsDao implements ICourseDetailsDao {
 	@Override
 	public List<Course> getAllCourse() {
 		// TODO Auto-generated method stub
+//		Course c = new Course();
+//		c.setCertiTitle("merit");
+//		c.setDuration(6);
+//		c.setName("sql");
+//		c.setPrefix("sql");
+//		courseJpaRepository.save(c);
 		return courseJpaRepository.findAll();
 	}
 
