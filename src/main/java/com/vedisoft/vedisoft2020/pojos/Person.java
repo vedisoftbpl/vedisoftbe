@@ -2,6 +2,9 @@ package com.vedisoft.vedisoft2020.pojos;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 import java.util.List;
 
@@ -97,11 +100,13 @@ public class Person implements Serializable {
 
 	//bi-directional many-to-one association to Installment
 	@OneToMany(mappedBy="person")
+	@JsonIgnore
 	private List<Installment> installments;
 
 	//bi-directional one-to-one association to PersonType
 	@OneToOne
 	@JoinColumn(name="pid")
+	@JsonIgnore
 	private PersonType personType;
 
 	public Person() {
