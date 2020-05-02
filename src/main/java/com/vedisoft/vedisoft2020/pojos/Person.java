@@ -106,7 +106,6 @@ public class Person implements Serializable {
 	//bi-directional one-to-one association to PersonType
 	@OneToOne
 	@JoinColumn(name="pid")
-	@JsonIgnore
 	private PersonType personType;
 
 	public Person() {

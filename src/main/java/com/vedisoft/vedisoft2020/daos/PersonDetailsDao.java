@@ -30,8 +30,8 @@ public class PersonDetailsDao implements IPersonDetailsDao {
 	@Override
 	public Person createPerson(Person person) {
 		// TODO Auto-generated method stub
-		
-		person.setPersonId((long)0);
+		if(person.getPersonId() == -1)
+			person.setPersonId((long)0);
 		return personJpaRepository.save(person);
 	}
 
