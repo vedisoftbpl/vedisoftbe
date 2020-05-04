@@ -191,6 +191,7 @@ public class Session implements Serializable {
 	
 
 	//bi-directional many-to-one association to Batch
+	@JsonIgnore
 	@OneToMany(mappedBy="session")
 	private List<Batch> batches;
 

@@ -18,24 +18,6 @@ public class Vedisoft2020Application {
 	public static void main(String[] args) {
 //	ConfigurableApplicationContext context = 		
 		SpringApplication.run(Vedisoft2020Application.class, args);
-//		BatchDetailsDao b = new BatchDetailsDao();
-//		List<Batch> batch = b.getAllBatches();
-//		System.out.println(batch.size());
-//		CourseDetailsDao c = new CourseDetailsDao();
-//		List<Course> course = c.getAllCourse();
-//		System.out.println(course.size());
-//		Batch batch = new Batch();
-//		
-//		batch.setCourse(new CourseDetailsDao().getCourseById((long)55));
-//		batch.setBranchId((long) 1);
-//		batch.setCode("rtyu");
-//		Session session = new Session();
-//		session.setSessionId((long)1);
-//		batch.setSession(session);
-//		context.getBean(BatchDetailsDao.class).createBatch(batch);
-//		List<Course> course = context.getBean(CourseDetailsDao.class).getAllCourse();
-//		System.out.println(course.size());
-//		
 	}
 
 }

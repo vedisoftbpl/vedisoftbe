@@ -2,6 +2,9 @@ package com.vedisoft.vedisoft2020.pojos;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 
@@ -31,6 +34,7 @@ public class Course implements Serializable {
 	private String prefix;
 
 	//bi-directional many-to-one association to Batch
+	@JsonIgnore
 	@OneToMany(mappedBy="course")
 	private List<Batch> batches;
 

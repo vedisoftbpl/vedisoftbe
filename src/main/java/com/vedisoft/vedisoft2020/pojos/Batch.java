@@ -2,6 +2,9 @@ package com.vedisoft.vedisoft2020.pojos;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 import java.util.List;
 
@@ -60,7 +63,7 @@ public class Batch implements Serializable {
 
 	//bi-directional one-to-one association to Branch
 	@OneToOne
-	@JoinColumn(name="batch_id", nullable=false, insertable=false, updatable=false)
+	@JoinColumn(name="branch_id", nullable=false, insertable=false, updatable=false)
 	private Branch branch;
 
 	//bi-directional many-to-one association to Course
@@ -74,16 +77,19 @@ public class Batch implements Serializable {
 	private Session session;
 
 	//bi-directional many-to-one association to Installment
+	@JsonIgnore
 	@OneToMany(mappedBy="batch")
 	private List<Installment> installments;
 
 	//bi-directional many-to-one association to Fee
+	@JsonIgnore
 	@OneToMany(mappedBy="batch")
 	private List<Fee> fees;
 
 	//bi-directional one-to-one association to StudentBatch
+	@JsonIgnore
 	@OneToOne
-	@JoinColumn(name="batch_id", referencedColumnName="batch_id", nullable=false, insertable=false, updatable=false)
+	@JoinColumn(name="batch_id", referencedColumnName="batch_id", nullable=true, insertable=false, updatable=false)
 	private StudentBatch studentBatch;
 
 	public Batch() {

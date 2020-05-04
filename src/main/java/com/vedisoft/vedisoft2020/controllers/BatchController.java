@@ -19,6 +19,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.vedisoft.vedisoft2020.daos.BranchDetailsDao;
 import com.vedisoft.vedisoft2020.daos.CourseDetailsDao;
+import com.vedisoft.vedisoft2020.daos.SessionDetailsDao;
 import com.vedisoft.vedisoft2020.pojos.Batch;
 import com.vedisoft.vedisoft2020.pojos.Branch;
 import com.vedisoft.vedisoft2020.pojos.Course;
@@ -49,33 +50,27 @@ public class BatchController {
 	
 	//for adding the new branch
 	@PostMapping("/batch/formSubmit")
-	public ResponseEntity<Void> createBatch(){
+	public ResponseEntity<Void> createBatch(@RequestBody Batch batch){
+//		batch.setBranchId(batch.getBranch().getBranchId());
+		
+		Batch b = new Batch();
+		
 		Course course = new Course();
 		course.setId((long)1);
 		Session session = new Session();
-		session.setSessionId((long)23);
-//		branch.setBranchId((long)1);
-//		branch.setExtra1("dsfs");
-//		branch.setExtra2(4);
-		System.out.println("intialized");
-		Batch b = new Batch();
-		b.setBatchId((long)0);
-		b.setCode("gh");
+		session.setSessionId((long)1);
+		Branch branch = new Branch();
+		branch.setBranchId((long)1);
+		b.setBatchId((long)-1);
+		b.setBranch(branch);
 		b.setCourse(course);
+		b.setSession(session);
 		b.setCreatedBy(1);
-		b.setCreationDate(new Date());
-		b.setDays("3");
-		b.setEnddate(""+new Date()+"");
 		b.setFacultyId(1);
 		b.setLastUpdatedBy(1);
-		b.setLastUpdationDate(new Date());
-		b.setSdate(new Date());
-		b.setSession(session);
-		b.setStatus("dfghj");
-		b.setTimings("5678");
 		b.setBranchId((long)1);
-//		b.setBranch(branch);
 		Batch createdBatch = batchService.createBatch(b);
+		
 		System.out.println("added"); 
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdBatch.getBatchId()).toUri();
 		return ResponseEntity.created(uri).build();

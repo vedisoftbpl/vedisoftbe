@@ -84,6 +84,7 @@ public class Branch implements Serializable {
 	private String street;
 
 	//bi-directional one-to-one association to Batch
+	@JsonIgnore
 	@OneToOne(mappedBy="branch")
 	private Batch batch;
 
@@ -98,9 +99,8 @@ public class Branch implements Serializable {
 	private List<Fee> fees;
 
 	//bi-directional many-to-one association to Installment
-	
-	@OneToMany(mappedBy="branch")
 	@JsonIgnore
+	@OneToMany(mappedBy="branch")
 	private List<Installment> installments;
 
 	//bi-directional many-to-one association to Person
@@ -109,8 +109,8 @@ public class Branch implements Serializable {
 	private List<Person> persons;
 
 	//bi-directional many-to-one association to Student
-	@OneToMany(mappedBy="branchBean")
 	@JsonIgnore
+	@OneToMany(mappedBy="branchBean")
 	private List<Student> students;
 
 	public Branch() {

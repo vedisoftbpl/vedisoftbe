@@ -2,6 +2,11 @@ package com.vedisoft.vedisoft2020.pojos;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 
 
@@ -46,6 +51,7 @@ public class StudentBatch implements Serializable {
 	private String studentId;
 
 	//bi-directional one-to-one association to Batch
+	@JsonIgnore
 	@OneToOne(mappedBy="studentBatch")
 	private Batch batch;
 
