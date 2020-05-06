@@ -51,27 +51,8 @@ public class BatchController {
 	//for adding the new branch
 	@PostMapping("/batch/formSubmit")
 	public ResponseEntity<Void> createBatch(@RequestBody Batch batch){
-//		batch.setBranchId(batch.getBranch().getBranchId());
 		
-		Batch b = new Batch();
-		
-		Course course = new Course();
-		course.setId((long)1);
-		Session session = new Session();
-		session.setSessionId((long)1);
-		Branch branch = new Branch();
-		branch.setBranchId((long)1);
-		b.setBatchId((long)-1);
-		b.setBranch(branch);
-		b.setCourse(course);
-		b.setSession(session);
-		b.setCreatedBy(1);
-		b.setFacultyId(1);
-		b.setLastUpdatedBy(1);
-		b.setBranchId((long)1);
-		Batch createdBatch = batchService.createBatch(b);
-		
-		System.out.println("added"); 
+		Batch createdBatch = batchService.createBatch(batch);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdBatch.getBatchId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}

@@ -3,6 +3,9 @@ package com.vedisoft.vedisoft2020.pojos;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.ForeignKey;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Date;
@@ -23,8 +26,7 @@ public class Batch implements Serializable {
 	@Column(name="batch_id", unique=true, nullable=false)
 	private Long batchId;
 
-	@Column(name="branch_id")
-	private Long branchId;
+	
 
 	@Column(length=45)
 	private String code;
@@ -63,7 +65,7 @@ public class Batch implements Serializable {
 
 	//bi-directional one-to-one association to Branch
 	@OneToOne
-	@JoinColumn(name="branch_id", nullable=false, insertable=false, updatable=false)
+	@JoinColumn(name="branch_id")
 	private Branch branch;
 
 	//bi-directional many-to-one association to Course
@@ -103,13 +105,13 @@ public class Batch implements Serializable {
 		this.batchId = batchId;
 	}
 
-	public Long getBranchId() {
-		return this.branchId;
-	}
-
-	public void setBranchId(Long branchId) {
-		this.branchId = branchId;
-	}
+//	public Long getBranchId() {
+//		return this.branchId;
+//	}
+//
+//	public void setBranchId(Long branchId) {
+//		this.branchId = branchId;
+//	}
 
 	public String getCode() {
 		return this.code;
