@@ -1,10 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `vedisoft2020` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `vedisoft2020`;
--- MySQL dump 10.13  Distrib 8.0.17, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
 --
 -- Host: localhost    Database: vedisoft2020
 -- ------------------------------------------------------
--- Server version	8.0.17
+-- Server version	8.0.18
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -43,10 +41,11 @@ CREATE TABLE `batch` (
   PRIMARY KEY (`batch_id`),
   KEY `FKlyo26rvg0hs090cwqxgxrw0xn` (`course_id`),
   KEY `FKqqkqw9inkx96xpy8glctrjal` (`session_id`),
-  CONSTRAINT `FK53ym4fhkxur42j72bk78dvwwu` FOREIGN KEY (`batch_id`) REFERENCES `branches` (`branch_id`),
+  KEY `FK2jwufuk00wmmr9jgra65sgyq7` (`branch_id`),
+  CONSTRAINT `FK2jwufuk00wmmr9jgra65sgyq7` FOREIGN KEY (`branch_id`) REFERENCES `branches` (`branch_id`),
   CONSTRAINT `FKlyo26rvg0hs090cwqxgxrw0xn` FOREIGN KEY (`course_id`) REFERENCES `course` (`id`),
   CONSTRAINT `FKqqkqw9inkx96xpy8glctrjal` FOREIGN KEY (`session_id`) REFERENCES `session` (`session_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=855 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=890 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -55,6 +54,7 @@ CREATE TABLE `batch` (
 
 LOCK TABLES `batch` WRITE;
 /*!40000 ALTER TABLE `batch` DISABLE KEYS */;
+INSERT INTO `batch` VALUES (1,'102',3,1,'5PM','2018-09-10','60','2018-09-20',1,1,'2018-09-10',1,'2018-09-10','1',1),(2,'102',3,1,'5PM','2018-09-10','60','2018-09-20',1,1,'2018-09-10',1,'2018-09-10','1',2),(889,'102',3,1,'5PM','2018-09-10','60','2018-09-20',1,1,'2018-09-10',1,'2018-09-10','1',3);
 /*!40000 ALTER TABLE `batch` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,7 +87,7 @@ CREATE TABLE `branches` (
   `lat` varchar(45) DEFAULT NULL,
   `longi` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`branch_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,7 +96,7 @@ CREATE TABLE `branches` (
 
 LOCK TABLES `branches` WRITE;
 /*!40000 ALTER TABLE `branches` DISABLE KEYS */;
-INSERT INTO `branches` VALUES (1,'vedisoft','mp','102','near mahindral','sargam','Bhopal','M.P',1,'7347896541','C++','1999-09-10',1,'2018-09-10',1,'2019-09-10','avc',1,'23.2524° N','77.4646° E'),(2,'vedisoft','mp','102','near mahindral','sargam','Chennai','M.P',2,'7389330515','JAVA','1999-09-10',1,'2018-09-10',1,'2019-09-10','avc',1,'23.2524° N','77.4646° E'),(3,'vedisoft','mp','102','near mahindral','sargam','Bhopal','M.P',3,'7389330515','Spring,Hibernate','1999-09-10',1,'2018-09-10',1,'2019-09-10','avc',1,'23.2524° N','77.4646° E'),(4,'vedisoft','mp','102','near mahindral','sargam','Bhopal','M.P',3,'7389330515','Angular','1999-09-10',1,'2018-09-10',1,'2019-09-10','avc',1,'23.2524° N','77.4646° E'),(5,'vedisoft','mp','102','near mahindral','sargam','Bhopal','M.P',4,'7398756978','Machine Learning,DL','1999-09-10',1,'2018-09-10',1,'2019-09-10','avc',1,'23.2524° N','77.4646° E');
+INSERT INTO `branches` VALUES (1,'vedisoft','mp','102','near mahindral','sargam','Bhopal','M.P',1,'7347896541','C++','1999-09-10',1,'2018-09-10',1,'2019-09-10','avc',1,'23.2524° N','77.4646° E'),(2,'vedisoft','mp','102','near mahindral','sargam','Calcutta','M.P',2,'7389330515','JAVA','1999-09-25',1,'2018-09-10',1,'2019-09-10','avc',1,'23.2524° N','77.4646° E'),(3,'vedisoft','mp','102','near mahindral','sargam','Bhopal','M.P',3,'7389330515','Spring,Hibernate','1999-09-10',1,'2018-09-10',1,'2019-09-10','avc',1,'23.2524° N','77.4646° E'),(4,'vedisoft','mp','102','near mahindral','sargam','Bhopal','M.P',3,'7389330515','Angular','1999-09-10',1,'2018-09-10',1,'2019-09-10','avc',1,'23.2524° N','77.4646° E'),(5,'vedisoft','mp','102','near mahindral','sargam','Bhopal','M.P',4,'7398756978','Machine Learning,DL','1999-09-10',1,'2018-09-10',1,'2019-09-10','avc',1,'23.2524° N','77.4646° E'),(6,'Aman Balani','sss',NULL,NULL,'BEHIN','KATNI','Madhya Pradesh',0,NULL,NULL,'2020-04-27',0,NULL,0,NULL,NULL,0,NULL,NULL),(7,'Aman Balani','IGH',NULL,NULL,'BEHIN','KATNI','Madhya Pradesh',0,NULL,NULL,'2020-04-27',0,NULL,0,NULL,NULL,0,NULL,NULL),(8,'vedisfot','IGH',NULL,NULL,'SARGAM','BHOPAL','Madhya Pradesh',0,NULL,NULL,'2020-04-28',0,NULL,0,NULL,NULL,0,NULL,NULL),(9,'Idgah Hills','IGH','','','Sargam','Bhopal','Madhya Pradesh',0,NULL,'','2020-04-28',0,NULL,0,NULL,NULL,0,NULL,NULL),(10,'Idgah Hills','IGH','593','IGH','Sargam','Bhopal','Madhya Pradesh',0,NULL,'All','2020-04-28',0,NULL,0,NULL,NULL,0,NULL,NULL),(11,'vedisoft','mp','102','mp nagar','andheri','KATNI','Madhya Pradesh',2,'7389330515','JAVA','1999-09-29',1,'2018-09-10',1,'2019-09-10','avc',1,'23.2524° N','77.4646° E'),(12,'vedisoft','mp','102','near mahindral','sargam','Calcutta','M.P',2,'7389330515','JAVA','1999-09-10',1,'2018-09-10',1,'2019-09-10','avc',1,'23.2524° N','77.4646° E');
 /*!40000 ALTER TABLE `branches` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -179,7 +179,7 @@ CREATE TABLE `course` (
   `certi_title` varchar(1000) DEFAULT NULL,
   `duration` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -188,7 +188,7 @@ CREATE TABLE `course` (
 
 LOCK TABLES `course` WRITE;
 /*!40000 ALTER TABLE `course` DISABLE KEYS */;
-INSERT INTO `course` VALUES (1,'Java','jav','JAVA DEVELOPER',3),(3,'Full Stack','DEVops','FULL STACK DEVELOPER',8);
+INSERT INTO `course` VALUES (1,'Java','jav','JAVA DEVELOPER',3),(53,'AWS','AWS','merit',1);
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -363,7 +363,7 @@ CREATE TABLE `person` (
   KEY `FKedyxnqaser12tdgscf2f02hoc` (`pid`),
   CONSTRAINT `FK24cd7xd1k53egm5vpw3jsgmxv` FOREIGN KEY (`branch_id`) REFERENCES `branches` (`branch_id`),
   CONSTRAINT `FKedyxnqaser12tdgscf2f02hoc` FOREIGN KEY (`pid`) REFERENCES `person_type` (`pid`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -372,7 +372,7 @@ CREATE TABLE `person` (
 
 LOCK TABLES `person` WRITE;
 /*!40000 ALTER TABLE `person` DISABLE KEYS */;
-INSERT INTO `person` VALUES (1,'ab','Aashray Jain','developer',NULL,'7389330515','katni','402','df','bhopal','bhopal','mp','1999-09-10','2016-06-12','1111-11-11','aashrayjainkatni@gmail.com','aashrayjain','$2a$10$fQS861GqtmQWU8GGgFuFt.58dfydVCAyjmiElSvXgIgjUn.BXoza6','admin',1,'as',12,'2016-06-12',12,'2016-06-12',NULL);
+INSERT INTO `person` VALUES (1,'ab','Aashray Jain','developer',NULL,'7389330515','katni','402','df','bhopal','bhopal','mp','1999-09-10','2016-06-12','1111-11-11','aashrayjainkatni@gmail.com','aashrayjain','$2a$10$fQS861GqtmQWU8GGgFuFt.58dfydVCAyjmiElSvXgIgjUn.BXoza6','admin',1,'as',12,'2016-06-12',12,'2016-06-12',NULL),(2,'ab','Aashray Jain','developer',NULL,'7389330515','katni','402','df','bhopal','bhopal','mp','1999-09-10','2016-06-12','1111-11-11','aamanktn@gmail.com','aashrayjain','$2a$10$fQS861GqtmQWU8GGgFuFt.58dfydVCAyjmiElSvXgIgjUn.BXoza6','admin',1,'as',12,'2016-06-12',12,'2016-06-12',NULL),(3,'ab','Aashray Jain','developer',NULL,'7389330515','katni','402','df','bhopal','bhopal','mp','1999-09-10','2016-06-12','1111-11-11','aashrayjainkatni@gmail.com','aashrayjain','$2a$10$fQS861GqtmQWU8GGgFuFt.58dfydVCAyjmiElSvXgIgjUn.BXoza6','admin',1,'as',12,'2016-06-12',12,'2016-06-12',NULL),(49,'ab','Aashray Jain','developer',NULL,'7389330515','katni','402','df','bhopal','bhopal','mp','1999-09-10','2016-06-12','1111-11-11','aashrayjainkatni@gmail.com','aashrayjain','$2a$10$fQS861GqtmQWU8GGgFuFt.58dfydVCAyjmiElSvXgIgjUn.BXoza6','admin',1,'as',12,'2016-06-12',12,'2016-06-12',NULL),(50,'ab','Aashray Jain','developer',NULL,'7389330515','katni','402','df','bhopal','bhopal','mp','1999-09-10','2016-06-12','1111-11-11','aashrayjainkatni@gmail.com','aashrayjain','$2a$10$fQS861GqtmQWU8GGgFuFt.58dfydVCAyjmiElSvXgIgjUn.BXoza6','admin',1,'as',12,'2016-06-12',12,'2016-06-12',NULL),(51,'ab','Aashray Jain','developer',1,'7389330515','katni','402','df','bhopal','bhopal','mp','1999-09-10','2016-06-12','1111-11-11','aashrayjainkatni@gmail.com','aashrayjain','$2a$10$fQS861GqtmQWU8GGgFuFt.58dfydVCAyjmiElSvXgIgjUn.BXoza6','admin',1,'as',12,'2016-06-12',12,'2016-06-12',NULL),(53,'1','ABCD','MD',2,'738901','Bhopal','402','df','Andheri West','Mumbai','MH','1999-09-10','2016-06-12','1111-11-11','roger@gmail.com','roger','$2a$10$fQS861GqtmQWU8GGgFuFt.58dfydVCAyjmiElSvXgIgjUn.BXoza6','admin',1,'789',55,'2016-06-12',12,'2016-06-12',NULL),(54,'1','ABCD','MD',3,'738901','Bhopal','402','df','Andheri West','Mumbai','MH','1999-09-10','2016-06-12','1111-11-11','roger@gmail.com','roger','$2a$10$fQS861GqtmQWU8GGgFuFt.58dfydVCAyjmiElSvXgIgjUn.BXoza6','admin',1,'789',55,'2016-06-12',12,'2016-06-12',NULL),(55,'','Aman Balani','Stu',1,'7389445506','BEHIND Q.NO. 11','','','','','','2020-04-29','2020-04-29','2020-04-29','amanktn@gmail.com','','7389330515','',1,'565',0,'2020-04-29',0,'2020-04-29',NULL),(56,'','Aman Balani','Sty',2,'7389445506','BEHIND Q.NO. 11, SHANTINAGAR, KATNI','','','','','','2020-04-29','2020-04-29','2020-04-29','amanktn@gmail.com','','565654','',1,'5656',0,'2020-04-29',0,'2020-04-29',3),(57,'','Aman Balani','android developer',3,'8889','Here','','','','','','2020-05-01','2020-05-01','2020-05-01','amanishere','','123456','',1,'565',0,'2020-05-01',0,'2020-05-01',NULL),(58,'','Aman Balani','tester',1,'65656565','ok','','','','','','2020-05-01','2020-05-01','2020-05-01','asdadadad','','6565656','',1,'4555',0,'2020-05-01',0,'2020-05-01',NULL),(59,'','Aman Balani 2','android developer',2,'7389445506','BEHIND Q.NO. 11','','','','','','2020-05-02','2020-05-02','2020-05-02','amanktn@gmail.com','','565665','',1,'5656565',0,'2020-05-02',0,'2020-05-02',2);
 /*!40000 ALTER TABLE `person` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -392,7 +392,7 @@ CREATE TABLE `person_type` (
   `last_updated_date` date DEFAULT NULL,
   `pid` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`pid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=546 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -401,6 +401,7 @@ CREATE TABLE `person_type` (
 
 LOCK TABLES `person_type` WRITE;
 /*!40000 ALTER TABLE `person_type` DISABLE KEYS */;
+INSERT INTO `person_type` VALUES ('1','Manager',1,'1999-09-10',1,'1999-09-10',2),('2','Manager',1,NULL,2,NULL,3);
 /*!40000 ALTER TABLE `person_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -596,4 +597,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-10 16:11:28
+-- Dump completed on 2020-05-06 11:06:08
