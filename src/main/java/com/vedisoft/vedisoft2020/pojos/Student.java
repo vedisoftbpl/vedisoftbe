@@ -93,6 +93,9 @@ public class Student implements Serializable {
 	@Column(length=255)
 	private String pno;
 
+	@Column(length=100)
+	private String img;
+
 	@Column(name="reg_id", length=145)
 	private String regId;
 
@@ -165,6 +168,14 @@ public class Student implements Serializable {
 
 	public void setCourse(String course) {
 		this.course = course;
+	}
+	
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
 	}
 
 	public int getCreatedBy() {

@@ -1,6 +1,12 @@
 package com.vedisoft.vedisoft2020.controllers;
 
+import java.io.IOException;
 import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +20,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vedisoft.vedisoft2020.pojos.Student;
 import com.vedisoft.vedisoft2020.services.IStudentService;
 
@@ -47,10 +56,44 @@ public class StudentController {
 	
 	//for adding the new branch
 	@PostMapping("/student/formSubmit")
-	public ResponseEntity<Void> createStudent(@RequestBody Student student){
-		Student createdStudent = studentService.createStudent(student);
+	public ResponseEntity<Void> createStudent(@RequestParam("myFile") MultipartFile file,
+			@RequestParam("student") String student){
+		String imgName = saveUploadedFile(file);
+		Student st = new Student();
+		try {
+			st = new ObjectMapper().readValue(student, Student.class);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		st.setImg(imgName);
+		Student createdStudent = studentService.createStudent(st);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdStudent.getRegistrationId()).toUri();
 		return ResponseEntity.created(uri).build();
+	}
+	
+	public String saveUploadedFile(MultipartFile file) {
+		String filename = new String();
+		if (file.isEmpty()) {
+			System.out.println("Empty");
+			return "Emplty File";
+		}
+		try {
+			String timeStamp = new SimpleDateFormat("yyyyMMddHHmm").format(new Date());
+			filename = file.getOriginalFilename().substring(0, file.getOriginalFilename().length() - 4) + timeStamp
+					+ ".jpg";
+			String folder = "/photos/";
+			byte[] bytes = file.getBytes();
+
+			Path path = Paths.get(folder + filename);
+			Files.write(path, bytes);
+			System.out.println("Upload completed");
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return filename;
 	}
 	
 	//for editing the existing branch
