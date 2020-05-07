@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.vedisoft.vedisoft2020.jparepository.BatchJpaRepository;
 import com.vedisoft.vedisoft2020.pojos.Batch;
+import com.vedisoft.vedisoft2020.pojos.Branch;
 import com.vedisoft.vedisoft2020.pojos.Course;
 
 @Repository
@@ -32,6 +33,7 @@ public class BatchDetailsDao implements IBatchDetailsDao {
 	@Override
 	public Batch createBatch(Batch batch) {
 		// TODO Auto-generated method stub
+		System.out.println(batch.getBranch().getBranchId());
 		if(batch.getBatchId()==-1) {
 			batch.setBatchId((long)0);
 		}
@@ -46,16 +48,16 @@ public class BatchDetailsDao implements IBatchDetailsDao {
 		return batch;
 	}
 
-	@Override
-	public Batch trail() {
-		// TODO Auto-generated method stub
-		Course course = new CourseDetailsDao().getCourseById((long)1);
-		Batch batch = new Batch((long)0,(long)0,"2019",course);
-		
-		System.out.println(course.getId());
-		batchJpaRepository.save(batch);
-		return batch;
-	}
+//	@Override
+//	public Batch trail() {
+//		// TODO Auto-generated method stub
+//		Course course = new CourseDetailsDao().getCourseById((long)1);
+//		Batch batch = new Batch((long)0,(long)0,"2019",course);
+//		
+//		System.out.println(course.getId());
+//		batchJpaRepository.save(batch);
+//		return batch;
+//	}
 
 
 }

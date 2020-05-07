@@ -13,6 +13,6 @@ public interface IBatchDetailsDao {
 	Batch getBatchById(Long id);
 	Batch createBatch(Batch batch);
 	Batch removeBatchById(Long id);
-	Batch trail();
+//	Batch trail();
 	
 }

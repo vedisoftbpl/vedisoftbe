@@ -51,7 +51,6 @@ public class StudentBatch implements Serializable {
 	private String studentId;
 
 	//bi-directional one-to-one association to Batch
-	@JsonIgnore
 	@OneToOne(mappedBy="studentBatch")
 	private Batch batch;
 
