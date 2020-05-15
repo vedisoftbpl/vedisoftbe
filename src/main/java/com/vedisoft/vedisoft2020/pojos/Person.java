@@ -99,8 +99,8 @@ public class Person implements Serializable {
 	private Branch branch;
 
 	//bi-directional many-to-one association to Installment
-	@OneToMany(mappedBy="person")
 	@JsonIgnore
+	@OneToMany(mappedBy="person")
 	private List<Installment> installments;
 
 	//bi-directional one-to-one association to PersonType

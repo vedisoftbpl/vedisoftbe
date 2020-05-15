@@ -22,7 +22,7 @@ public class StudentBatch implements Serializable {
 
 	@Id
 	@Column(name="sb_id", unique=true, nullable=false)
-	private int sbId;
+	private Long sbId;
 
 	@Column(length=45)
 	private String certificate;
@@ -57,11 +57,11 @@ public class StudentBatch implements Serializable {
 	public StudentBatch() {
 	}
 
-	public int getSbId() {
+	public long getSbId() {
 		return this.sbId;
 	}
 
-	public void setSbId(int sbId) {
+	public void setSbId(long sbId) {
 		this.sbId = sbId;
 	}
 

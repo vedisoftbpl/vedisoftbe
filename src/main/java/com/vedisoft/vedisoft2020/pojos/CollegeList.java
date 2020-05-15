@@ -26,7 +26,7 @@ public class CollegeList implements Serializable {
 	private String city;
 
 	@Column(length=45)
-	private String group;
+	private String collegeGroup;
 
 	@Column(length=80)
 	private String name;
@@ -41,7 +41,7 @@ public class CollegeList implements Serializable {
 
 	@Override
 	public String toString() {
-		return "CollegeList [id=" + id + ", city=" + city + ", group=" + group + ", name=" + name + ", prefix=" + prefix
+		return "CollegeList [id=" + id + ", city=" + city + ", group=" + collegeGroup + ", name=" + name + ", prefix=" + prefix
 				+ "]";
 	}
 
@@ -65,11 +65,11 @@ public class CollegeList implements Serializable {
 	}
 
 	public String getGroup() {
-		return this.group;
+		return this.collegeGroup;
 	}
 
 	public void setGroup(String group) {
-		this.group = group;
+		this.collegeGroup = group;
 	}
 
 	public String getName() {

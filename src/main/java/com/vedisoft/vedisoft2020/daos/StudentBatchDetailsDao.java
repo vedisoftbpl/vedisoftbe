@@ -24,7 +24,7 @@ public class StudentBatchDetailsDao implements IStudentBatchDetailsDao {
 	}
 
 	@Override
-	public StudentBatch getStudentBatchById(int studentBatchId) {
+	public StudentBatch getStudentBatchById(long studentBatchId) {
 		// TODO Auto-generated method stub
 		return studentBatchJpaRepository.findById(studentBatchId).get();
 	}
@@ -39,7 +39,7 @@ public class StudentBatchDetailsDao implements IStudentBatchDetailsDao {
 	}
 
 	@Override
-	public StudentBatch removeStudentBatchById(int studentBatchId) {
+	public StudentBatch removeStudentBatchById(long studentBatchId) {
 		// TODO Auto-generated method stub
 		StudentBatch studentBatch = getStudentBatchById(studentBatchId);
 		studentBatchJpaRepository.deleteById(studentBatchId);

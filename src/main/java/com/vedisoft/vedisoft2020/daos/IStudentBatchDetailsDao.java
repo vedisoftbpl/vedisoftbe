@@ -6,8 +6,8 @@ import com.vedisoft.vedisoft2020.pojos.StudentBatch;
 
 public interface IStudentBatchDetailsDao {
 	List<StudentBatch> getAllStudentBatch();
-	StudentBatch getStudentBatchById(int studentBatchId);
+	StudentBatch getStudentBatchById(long studentBatchId);
 	StudentBatch createStudentBatch(StudentBatch studentBatch);
-	StudentBatch removeStudentBatchById(int studentBatchId);
+	StudentBatch removeStudentBatchById(long studentBatchId);
 
 }
