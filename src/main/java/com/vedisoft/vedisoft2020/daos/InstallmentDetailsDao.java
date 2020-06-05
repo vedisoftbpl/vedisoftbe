@@ -1,6 +1,9 @@
 package com.vedisoft.vedisoft2020.daos;
 
+import java.util.ArrayList;
+
 import java.util.List;
+
 
 import javax.transaction.Transactional;
 
@@ -43,6 +46,25 @@ public class InstallmentDetailsDao implements IInstallmentDetailsDao {
 		Installment installment = getInstallmentById(id);
 		installmentJpaRepository.deleteById(id);
 		return installment;
+	}
+
+	@Override
+	public List<Installment> getByBranchId(long branchId) {
+
+		return installmentJpaRepository.findInstallmentByBranchBranchId(branchId);
+	}
+
+	@Override
+	public List<Float> getTotalGST(String dateFrom, String dateTo) {
+		List<Float> totalGST = new ArrayList<Float>();
+		totalGST.add(0, installmentJpaRepository.getCGST(dateFrom, dateTo));
+		totalGST.add(1, installmentJpaRepository.getSGST(dateFrom, dateTo));
+		return totalGST;
+	}
+
+	@Override
+	public List<?> getDayBook(String date, int branchId) {
+		return installmentJpaRepository.getDayBook(date, branchId);
 	}
 
 }

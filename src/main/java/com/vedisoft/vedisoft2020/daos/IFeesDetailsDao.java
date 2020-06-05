@@ -9,4 +9,5 @@ public interface IFeesDetailsDao {
 	Fee getFeeById(int id);
 	Fee createFee(Fee fee);
 	Fee removeFee(int id);
+	List<Fee> getByBranch(int branchId);
 }

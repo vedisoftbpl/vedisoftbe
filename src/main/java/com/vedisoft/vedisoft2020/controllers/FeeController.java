@@ -59,4 +59,10 @@ public class FeeController {
 		Fee feeEdited = feeService.createFee(fee);
 		return new ResponseEntity<Fee>(feeEdited, HttpStatus.OK);
 	}
+	
+//	@GetMapping("/fee/branch/{branchId}")
+//	public ResponseEntity<List<Fee>> getByBranch(@PathVariable("branchId") int id) {
+//		List<Fee> fee = feeService.getByBranch(id);
+//		return new ResponseEntity<List<Fee>>(fee, HttpStatus.OK);
+//	}
 }

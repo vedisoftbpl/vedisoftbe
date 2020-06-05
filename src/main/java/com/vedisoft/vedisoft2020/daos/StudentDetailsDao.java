@@ -46,4 +46,9 @@ public class StudentDetailsDao implements IStudentDetailsDao {
 		return student;
 	}
 
+	@Override
+	public List<?> getStudentsByCollege(String startDate, String endDate, int branchId) {
+		return studentJpaRepository.getStudentsByCollege(startDate, endDate, branchId);
+	}
+
 }

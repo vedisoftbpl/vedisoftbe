@@ -5,6 +5,7 @@ import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -101,5 +102,17 @@ public class StudentController {
 	public ResponseEntity<Student> editStudent(@PathVariable long studentId, @RequestBody Student student){
 		Student studentEdited = studentService.createStudent(student);
 		return new ResponseEntity<Student>(studentEdited, HttpStatus.OK);
+	}
+	
+	@PostMapping("/student/collegeWise/{branchId}")
+	public ResponseEntity<List<?>> getStudentsByCollege(@PathVariable int branchId, @RequestBody List<Date> dates) {
+		Date startDate, endDate;
+		startDate = dates.get(0);
+		endDate = dates.get(1);
+		DateFormat outputFormatter = new SimpleDateFormat("yyyy-MM-dd");
+		String from = outputFormatter.format(startDate);
+		String to = outputFormatter.format(endDate);
+		List<?> studentsCollegeWise = studentService.getStudentsByCollege(from, to, branchId);
+		return new ResponseEntity<List<?>>(studentsCollegeWise, HttpStatus.OK);
 	}
 }

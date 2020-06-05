@@ -38,4 +38,9 @@ public class StudentService implements IStudentService {
 		return iStudentDetailsDao.removeStudent(id);
 	}
 
+	@Override
+	public List<?> getStudentsByCollege(String startDate, String endDate, int branchId) {
+		return iStudentDetailsDao.getStudentsByCollege(startDate, endDate, branchId);
+	}
+
 }

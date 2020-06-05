@@ -9,4 +9,5 @@ public interface IStudentDetailsDao {
 	Student getStudentById(int id);
 	Student createStudent(Student student);
 	Student removeStudent(int id);
+	List<?> getStudentsByCollege(String startDate, String endDate, int branchId);
 }

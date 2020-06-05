@@ -38,4 +38,9 @@ public class FeeService implements IFeeService {
 		return iFeesDetailsDao.removeFee(id);
 	}
 
+	@Override
+	public List<Fee> getByBranch(int branchId) {
+		return iFeesDetailsDao.getByBranch(branchId);
+	}
+
 }

@@ -45,4 +45,9 @@ public class FeesDetailsDao implements IFeesDetailsDao {
 		return fee;
 	}
 
+	@Override
+	public List<Fee> getByBranch(int branchId) {	
+		return feeJpaRepository.findFeeByBranchBranchId((long)branchId);
+	}
+
 }

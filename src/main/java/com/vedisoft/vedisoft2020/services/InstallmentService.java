@@ -1,5 +1,6 @@
 package com.vedisoft.vedisoft2020.services;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,23 @@ public class InstallmentService implements IInstallmentService {
 	public Installment removeInstallment(int id) {
 		// TODO Auto-generated method stub
 		return iInstallmentDetailsDao.removeInstallment(id);
+	}
+
+	@Override
+	public List<Installment> getByBranchId(long branchId) {
+		// TODO Auto-generated method stub
+		return iInstallmentDetailsDao.getByBranchId(branchId);
+	}
+
+	@Override
+	public List<Float> getTotalGST(String dateFrom, String dateTo) {
+		// TODO Auto-generated method stub
+		return iInstallmentDetailsDao.getTotalGST(dateFrom, dateTo);
+	}
+
+	@Override
+	public List<?> getDayBook(String date, int branchId) {
+		return iInstallmentDetailsDao.getDayBook(date, branchId);
 	}
 
 }
