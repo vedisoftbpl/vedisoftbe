@@ -50,4 +50,9 @@ public class FeesDetailsDao implements IFeesDetailsDao {
 		return feeJpaRepository.findFeeByBranchBranchId((long)branchId);
 	}
 
+	@Override
+	public List<Fee> getByBatch(int batchId) {
+		return feeJpaRepository.findFeeByBatchBatchId(batchId);
+	}
+
 }

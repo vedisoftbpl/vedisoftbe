@@ -10,4 +10,5 @@ public interface IFeesDetailsDao {
 	Fee createFee(Fee fee);
 	Fee removeFee(int id);
 	List<Fee> getByBranch(int branchId);
+	List<Fee> getByBatch(int batchId);
 }

@@ -12,4 +12,5 @@ import com.vedisoft.vedisoft2020.pojos.Fee;
 @Repository
 public interface FeesJpaRepository extends JpaRepository<Fee, Integer>{	
 	List<Fee> findFeeByBranchBranchId(long branchId);
+	List<Fee> findFeeByBatchBatchId(long batchId);
 }

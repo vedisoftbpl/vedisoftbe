@@ -56,4 +56,10 @@ public class InstallmentService implements IInstallmentService {
 		return iInstallmentDetailsDao.getDayBook(date, branchId);
 	}
 
+	@Override
+	public List<?> getBatchWiseCollection(int batchId) {
+
+		return iInstallmentDetailsDao.getBatchWiseCollection(batchId);
+	}
+
 }

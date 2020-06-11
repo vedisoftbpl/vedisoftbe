@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 
@@ -90,5 +89,10 @@ public class InstallmentController {
 		String dt = outputFormatter.format(date.get(0));
 		List<?> dayBook = installmentService.getDayBook(dt, branchId);
 		return new ResponseEntity<List<?>>(dayBook, HttpStatus.OK);
+	}
+	@GetMapping("reports/batchWiseCollection/{batchId}")
+	public ResponseEntity<List<?>> getDayBook(@PathVariable int batchId) {
+		List<?> batchWiseCollection = installmentService.getBatchWiseCollection(batchId);
+		return new ResponseEntity<List<?>>(batchWiseCollection, HttpStatus.OK);
 	}
 }

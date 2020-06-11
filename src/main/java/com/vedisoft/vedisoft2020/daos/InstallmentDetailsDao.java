@@ -67,4 +67,9 @@ public class InstallmentDetailsDao implements IInstallmentDetailsDao {
 		return installmentJpaRepository.getDayBook(date, branchId);
 	}
 
+	@Override
+	public List<?> getBatchWiseCollection(int batchId) {
+		return installmentJpaRepository.getBatchWiseCollection(batchId);
+	}
+
 }

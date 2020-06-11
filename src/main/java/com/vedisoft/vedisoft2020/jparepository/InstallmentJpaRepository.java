@@ -33,4 +33,11 @@ public interface InstallmentJpaRepository extends JpaRepository<Installment, Int
 			"ON Installment.reg_no = Student.registration_id " +
             "WHERE inst_date = :date AND Installment.branch_id = :branchId", nativeQuery = true)
 	List<?> getDayBook(@Param("date")String date, @Param("branchId")int branchId);
+	
+	@Query(value = "SELECT name, reg_no, mno, amt "
+			+ 
+            "FROM Installment INNER JOIN Student " +
+			"ON Installment.reg_no = Student.registration_id " +
+            "WHERE Installment.batch_id = :batchId", nativeQuery = true)
+	List<?> getBatchWiseCollection(@Param("batchId")int batchId);
 }

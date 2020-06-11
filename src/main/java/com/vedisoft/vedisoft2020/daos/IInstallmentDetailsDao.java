@@ -13,4 +13,6 @@ public interface IInstallmentDetailsDao {
 	List<Installment> getByBranchId(long branchId);
 	List<Float> getTotalGST(String dateFrom, String dateTo);
 	List<?> getDayBook(String date, int branchId);
+	List<?> getBatchWiseCollection(int batchId);
+	
 }

@@ -43,4 +43,9 @@ public class FeeService implements IFeeService {
 		return iFeesDetailsDao.getByBranch(branchId);
 	}
 
+	@Override
+	public List<Fee> getByBatch(int batchId) {
+		return iFeesDetailsDao.getByBatch(batchId);
+	}
+
 }

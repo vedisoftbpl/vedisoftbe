@@ -65,4 +65,9 @@ public class FeeController {
 //		List<Fee> fee = feeService.getByBranch(id);
 //		return new ResponseEntity<List<Fee>>(fee, HttpStatus.OK);
 //	}
+	@GetMapping("/fee/batch/{batchId}")
+	public ResponseEntity<List<Fee>> getByBatch(@PathVariable("batchId") int id) {
+		List<Fee> fee = feeService.getByBatch(id);
+		return new ResponseEntity<List<Fee>>(fee, HttpStatus.OK);
+	}
 }
