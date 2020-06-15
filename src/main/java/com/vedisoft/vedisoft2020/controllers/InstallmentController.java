@@ -91,8 +91,13 @@ public class InstallmentController {
 		return new ResponseEntity<List<?>>(dayBook, HttpStatus.OK);
 	}
 	@GetMapping("reports/batchWiseCollection/{batchId}")
-	public ResponseEntity<List<?>> getDayBook(@PathVariable int batchId) {
+	public ResponseEntity<List<?>> getBatchWiseCollection(@PathVariable int batchId) {
 		List<?> batchWiseCollection = installmentService.getBatchWiseCollection(batchId);
 		return new ResponseEntity<List<?>>(batchWiseCollection, HttpStatus.OK);
+	}
+	@GetMapping("reports/sessionWiseCollection/{sessionId}")
+	public ResponseEntity<List<?>> getSessionWiseCollection(@PathVariable int sessionId) {
+		List<?> sessionWiseCollection = installmentService.getSessionWiseCollection(sessionId);
+		return new ResponseEntity<List<?>>(sessionWiseCollection, HttpStatus.OK);
 	}
 }

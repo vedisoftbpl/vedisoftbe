@@ -72,4 +72,9 @@ public class InstallmentDetailsDao implements IInstallmentDetailsDao {
 		return installmentJpaRepository.getBatchWiseCollection(batchId);
 	}
 
+	@Override
+	public List<?> getSessionWiseCollection(int sessionId) {
+		return installmentJpaRepository.getSessionWiseCollection(sessionId);
+	}
+
 }

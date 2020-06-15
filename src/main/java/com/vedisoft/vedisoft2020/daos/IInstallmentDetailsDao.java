@@ -14,5 +14,5 @@ public interface IInstallmentDetailsDao {
 	List<Float> getTotalGST(String dateFrom, String dateTo);
 	List<?> getDayBook(String date, int branchId);
 	List<?> getBatchWiseCollection(int batchId);
-	
+	List<?> getSessionWiseCollection(int sessionId);
 }

@@ -62,4 +62,9 @@ public class InstallmentService implements IInstallmentService {
 		return iInstallmentDetailsDao.getBatchWiseCollection(batchId);
 	}
 
+	@Override
+	public List<?> getSessionWiseCollection(int sessionId) {
+		return iInstallmentDetailsDao.getSessionWiseCollection(sessionId);
+	}
+
 }
