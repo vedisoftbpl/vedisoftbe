@@ -67,4 +67,9 @@ public class InstallmentService implements IInstallmentService {
 		return iInstallmentDetailsDao.getSessionWiseCollection(sessionId);
 	}
 
+	@Override
+	public List<?> getBranchWiseCollection(String from, String to) {
+		return iInstallmentDetailsDao.getBranchWiseCollection(from, to);
+	}
+
 }

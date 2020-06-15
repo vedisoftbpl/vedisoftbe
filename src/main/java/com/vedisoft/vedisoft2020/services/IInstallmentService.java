@@ -15,5 +15,5 @@ public interface IInstallmentService {
 	List<?> getDayBook(String date, int branchId);
 	List<?> getBatchWiseCollection(int batchId);
 	List<?> getSessionWiseCollection(int sessionId);
-	
+	List<?> getBranchWiseCollection(String from, String to);
 }

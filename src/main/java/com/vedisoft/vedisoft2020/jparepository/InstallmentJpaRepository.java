@@ -48,5 +48,9 @@ public interface InstallmentJpaRepository extends JpaRepository<Installment, Int
             "WHERE Batch.session_id = :sessionId GROUP BY Installment.branch_id", nativeQuery = true)
 	List<?> getSessionWiseCollection(@Param("sessionId")int sessionId);
 	
-	
+	@Query(value = "SELECT Installment.branch_id, (SELECT Branches.branch_name FROM Branches WHERE branch_id = Installment.branch_id), SUM(amt) "
+			+ 
+            "FROM Installment " +
+            "WHERE inst_date BETWEEN :from AND :to GROUP BY Installment.branch_id", nativeQuery = true)
+	List<?> getBranchWiseCollection(@Param("from")String from, @Param("to")String to);
 }

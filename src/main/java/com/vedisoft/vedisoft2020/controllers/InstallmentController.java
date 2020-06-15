@@ -100,4 +100,12 @@ public class InstallmentController {
 		List<?> sessionWiseCollection = installmentService.getSessionWiseCollection(sessionId);
 		return new ResponseEntity<List<?>>(sessionWiseCollection, HttpStatus.OK);
 	}
+	@PostMapping("reports/branchWiseCollection")
+	public ResponseEntity<List<?>> getBranchWiseCollection(@RequestBody List<Date> date) {
+		DateFormat outputFormatter = new SimpleDateFormat("yyyy-MM-dd");
+		String from = outputFormatter.format(date.get(0));
+		String to = outputFormatter.format(date.get(1));
+		List<?> branchWiseCollection = installmentService.getBranchWiseCollection(from, to);
+		return new ResponseEntity<List<?>>(branchWiseCollection, HttpStatus.OK);
+	}
 }

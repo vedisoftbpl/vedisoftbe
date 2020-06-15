@@ -77,4 +77,9 @@ public class InstallmentDetailsDao implements IInstallmentDetailsDao {
 		return installmentJpaRepository.getSessionWiseCollection(sessionId);
 	}
 
+	@Override
+	public List<?> getBranchWiseCollection(String from, String to) {
+		return installmentJpaRepository.getBranchWiseCollection(from, to);
+	}
+
 }
