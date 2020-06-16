@@ -16,4 +16,7 @@ public interface IInstallmentService {
 	List<?> getBatchWiseCollection(int batchId);
 	List<?> getSessionWiseCollection(int sessionId);
 	List<?> getBranchWiseCollection(String from, String to);
+	List<?> getFacultyWiseCollection(String from, String to);
+	List<?> getCourseWiseCollection(List<Long> branches, String from, String to);
+	List<?> getBranchWiseStudents(List<Long> branches, String from, String to);
 }

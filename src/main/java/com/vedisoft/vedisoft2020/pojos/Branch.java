@@ -85,8 +85,8 @@ public class Branch implements Serializable {
 
 	//bi-directional one-to-one association to Batch
 	@JsonIgnore
-	@OneToOne(mappedBy="branch")
-	private Batch batch;
+	@OneToMany(mappedBy="branch")
+	private List<Batch> batch;
 
 	//bi-directional many-to-one association to CertificateRequest
 	@JsonIgnore
@@ -276,11 +276,11 @@ public class Branch implements Serializable {
 		this.street = street;
 	}
 
-	public Batch getBatch() {
+	public List<Batch> getBatch() {
 		return this.batch;
 	}
 
-	public void setBatch(Batch batch) {
+	public void setBatch(List<Batch> batch) {
 		this.batch = batch;
 	}
 

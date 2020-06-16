@@ -82,4 +82,19 @@ public class InstallmentDetailsDao implements IInstallmentDetailsDao {
 		return installmentJpaRepository.getBranchWiseCollection(from, to);
 	}
 
+	@Override
+	public List<?> getFacultyWiseCollection(String from, String to) {
+		return installmentJpaRepository.getFacultyWiseCollection(from, to);
+	}
+
+	@Override
+	public List<?> getCourseWiseCollection(List<Long> branches, String from, String to) {
+		return installmentJpaRepository.getCourseWiseCollection(branches, from, to);
+	}
+
+	@Override
+	public List<?> getBranchWiseStudents(List<Long> branches, String from, String to) {
+		return installmentJpaRepository.getBranchWiseStudents(branches, from, to);
+	}
+
 }

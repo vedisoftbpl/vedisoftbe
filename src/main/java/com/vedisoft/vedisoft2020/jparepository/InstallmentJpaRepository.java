@@ -53,4 +53,21 @@ public interface InstallmentJpaRepository extends JpaRepository<Installment, Int
             "FROM Installment " +
             "WHERE inst_date BETWEEN :from AND :to GROUP BY Installment.branch_id", nativeQuery = true)
 	List<?> getBranchWiseCollection(@Param("from")String from, @Param("to")String to);
+	
+	@Query(value = "SELECT person_name, SUM(amt) " + 
+            "FROM ((Installment INNER JOIN Batch ON Installment.batch_id = Batch.batch_id) " +
+			"INNER JOIN Person ON Batch.faculty_id = Person.person_id) " +
+            "WHERE inst_date BETWEEN :from AND :to GROUP BY Batch.faculty_id", nativeQuery = true)
+	List<?> getFacultyWiseCollection(@Param("from")String from, @Param("to")String to);
+	
+	@Query(value = "SELECT Installment.branch_id, Course.name, SUM(amt) " + 
+            "FROM ((Installment INNER JOIN Batch ON Installment.batch_id = Batch.batch_id) " +
+			"INNER JOIN Course ON Batch.course_id = Course.id) " +
+            "WHERE ((Installment.branch_id IN :branches) AND (inst_date BETWEEN :from AND :to)) GROUP BY Batch.course_id", nativeQuery = true)
+	List<?> getCourseWiseCollection(@Param("branches")List<Long> branches, @Param("from")String from, @Param("to")String to);
+	
+	@Query(value = "SELECT student_batch.batch_id, COUNT(sb_id) " +
+			"FROM student_batch INNER JOIN Student ON student_batch.student_id = Student.registration_id  " +
+            "WHERE ((Student.branch_id IN :branches) AND (registration_date BETWEEN :from AND :to)) GROUP BY student_batch.batch_id", nativeQuery = true)
+	List<?> getBranchWiseStudents(@Param("branches")List<Long> branches, @Param("from")String from, @Param("to")String to);
 }

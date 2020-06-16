@@ -3,6 +3,7 @@ package com.vedisoft.vedisoft2020.controllers;
 import java.net.URI;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,8 +20,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-
+import com.vedisoft.vedisoft2020.pojos.Branch;
 import com.vedisoft.vedisoft2020.pojos.Installment;
+import com.vedisoft.vedisoft2020.services.IBranchService;
 import com.vedisoft.vedisoft2020.services.IInstallmentService;
 
 @Controller
@@ -29,6 +31,8 @@ import com.vedisoft.vedisoft2020.services.IInstallmentService;
 public class InstallmentController {
 	@Autowired
 	private IInstallmentService installmentService;
+	@Autowired
+	private IBranchService branchService;
 	
 	
 //	@Autowired
@@ -107,5 +111,50 @@ public class InstallmentController {
 		String to = outputFormatter.format(date.get(1));
 		List<?> branchWiseCollection = installmentService.getBranchWiseCollection(from, to);
 		return new ResponseEntity<List<?>>(branchWiseCollection, HttpStatus.OK);
+	}
+	@PostMapping("reports/facultyWiseCollection")
+	public ResponseEntity<List<?>> getFacultyWiseCollection(@RequestBody List<Date> date) {
+		DateFormat outputFormatter = new SimpleDateFormat("yyyy-MM-dd");
+		String from = outputFormatter.format(date.get(0));
+		String to = outputFormatter.format(date.get(1));
+		List<?> facultyWiseCollection = installmentService.getFacultyWiseCollection(from, to);
+		return new ResponseEntity<List<?>>(facultyWiseCollection, HttpStatus.OK);
+	}
+	@PostMapping("reports/courseWiseCollection/{branchId}")
+	public ResponseEntity<List<?>> getCourseWiseCollection(@PathVariable Long branchId, @RequestBody List<Date> date) {
+		DateFormat outputFormatter = new SimpleDateFormat("yyyy-MM-dd");
+		List<Long> branchIds = new ArrayList<Long>();
+		List<Branch> branches = new ArrayList<Branch>();
+		branches = branchService.getAllBranches();
+		String from = outputFormatter.format(date.get(0));
+		String to = outputFormatter.format(date.get(1));
+		if(branchId == 0) {
+			for(int i = 0; i < branches.size(); i++)
+				branchIds.add(branches.get(i).getBranchId());
+		}
+		else {
+			branchIds.add(branchId);
+		}
+			
+		List<?> courseWiseCollection = installmentService.getCourseWiseCollection(branchIds, from, to);
+		return new ResponseEntity<List<?>>(courseWiseCollection, HttpStatus.OK);
+	}
+	@PostMapping("reports/branchWiseStudents/{branchId}")
+	public ResponseEntity<List<?>> getBranchWiseStudents(@PathVariable Long branchId, @RequestBody List<Date> date) {
+		DateFormat outputFormatter = new SimpleDateFormat("yyyy-MM-dd");
+		List<Long> branchIds = new ArrayList<Long>();
+		List<Branch> branches = new ArrayList<Branch>();
+		branches = branchService.getAllBranches();
+		String from = outputFormatter.format(date.get(0));
+		String to = outputFormatter.format(date.get(1));
+		if(branchId == 0) {
+			for(int i = 0; i < branches.size(); i++)
+				branchIds.add(branches.get(i).getBranchId());
+		}
+		else {
+			branchIds.add(branchId);
+		}
+		List<?> branchWiseStudents = installmentService.getBranchWiseStudents(branchIds, from, to);
+		return new ResponseEntity<List<?>>(branchWiseStudents, HttpStatus.OK);
 	}
 }

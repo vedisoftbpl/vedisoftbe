@@ -72,4 +72,19 @@ public class InstallmentService implements IInstallmentService {
 		return iInstallmentDetailsDao.getBranchWiseCollection(from, to);
 	}
 
+	@Override
+	public List<?> getFacultyWiseCollection(String from, String to) {
+		return iInstallmentDetailsDao.getFacultyWiseCollection(from, to);
+	}
+
+	@Override
+	public List<?> getCourseWiseCollection(List<Long> branches, String from, String to) {
+		return iInstallmentDetailsDao.getCourseWiseCollection(branches, from, to);
+	}
+
+	@Override
+	public List<?> getBranchWiseStudents(List<Long> branches, String from, String to) {
+		return iInstallmentDetailsDao.getBranchWiseStudents(branches, from, to);
+	}
+
 }
