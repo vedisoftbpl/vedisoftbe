@@ -284,6 +284,11 @@ public class Batch implements Serializable {
 		this.code = code;
 		this.course = course;
 	}
+
+	@Override
+	public String toString() {
+		return "Batch [batchId=" + batchId + "]";
+	}
 	
 	
 	

@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.vedisoft.vedisoft2020.jparepository.BatchJpaRepository;
 import com.vedisoft.vedisoft2020.jparepository.StudentBatchJpaRepository;
 import com.vedisoft.vedisoft2020.pojos.StudentBatch;
 
@@ -16,6 +17,9 @@ public class StudentBatchDetailsDao implements IStudentBatchDetailsDao {
 	
 	@Autowired
 	private StudentBatchJpaRepository studentBatchJpaRepository;
+	
+//	@Autowired
+//	private BatchDetailsDao batchDetails;
 	
 	@Override
 	public List<StudentBatch> getAllStudentBatch() {
@@ -32,6 +36,9 @@ public class StudentBatchDetailsDao implements IStudentBatchDetailsDao {
 	@Override
 	public StudentBatch createStudentBatch(StudentBatch studentBatch) {
 		// TODO Auto-generated method stub
+//		System.out.println(studentBatch);
+//		studentBatch.setBatch(batchDetails.getBatchById(studentBatch.getBatch().getBatchId()));
+		
 		if(studentBatch.getSbId()==-1) {
 			studentBatch.setSbId(0);
 		}

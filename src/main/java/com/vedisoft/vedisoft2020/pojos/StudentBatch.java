@@ -137,4 +137,14 @@ public class StudentBatch implements Serializable {
 		this.batch = batch;
 	}
 
+	@Override
+	public String toString() {
+		return "StudentBatch [sbId=" + sbId + ", certificate=" + certificate + ", createdBy=" + createdBy
+				+ ", createdDate=" + createdDate + ", flag=" + flag + ", joined=" + joined + ", lastUpdatedBy="
+				+ lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", studentId=" + studentId + ", batch="
+				+ batch + "]";
+	}
+	
+	
+
 }

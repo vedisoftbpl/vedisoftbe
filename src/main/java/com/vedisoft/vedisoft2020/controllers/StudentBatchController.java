@@ -48,6 +48,7 @@ public class StudentBatchController {
 	//for adding the new branch
 	@PostMapping("/studentBatch/formSubmit")
 	public ResponseEntity<Void> createStudentBatch(@RequestBody StudentBatch studentBatch){
+	//	System.out.println(studentBatch);
 		StudentBatch createdStudentBatch = studentBatchService.createStudentBatch(studentBatch);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdStudentBatch.getSbId()).toUri();
 		return ResponseEntity.created(uri).build();
