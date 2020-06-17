@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.vedisoft.vedisoft2020.daos.BatchDetailsDao;
+import com.vedisoft.vedisoft2020.pojos.Batch;
 import com.vedisoft.vedisoft2020.pojos.Branch;
 import com.vedisoft.vedisoft2020.pojos.Installment;
 import com.vedisoft.vedisoft2020.services.IBranchService;
@@ -33,7 +35,8 @@ public class InstallmentController {
 	private IInstallmentService installmentService;
 	@Autowired
 	private IBranchService branchService;
-	
+	@Autowired
+	private BatchDetailsDao batchDetails;
 	
 //	@Autowired
 //	private BranchJpaRepository branchJpaRepository;
@@ -56,6 +59,8 @@ public class InstallmentController {
 	
 	@PostMapping("/installment/formSubmit")
 	public ResponseEntity<Void> createInstallment(@RequestBody Installment installment){
+		Batch batch =  batchDetails.getBatchById(installment.getBatch().getBatchId());
+		installment.setBranch(batch.getBranch());
 		Installment createdInstallment = installmentService.createInstallment(installment);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdInstallment.getId()).toUri();
 		return ResponseEntity.created(uri).build();
