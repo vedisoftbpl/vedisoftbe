@@ -162,4 +162,22 @@ public class InstallmentController {
 		List<?> branchWiseStudents = installmentService.getBranchWiseStudents(branchIds, from, to);
 		return new ResponseEntity<List<?>>(branchWiseStudents, HttpStatus.OK);
 	}
+	@PostMapping("reports/badDebts/{branchId}")
+	public ResponseEntity<List<?>> getBadDebts(@PathVariable Long branchId, @RequestBody List<Date> date) {
+		DateFormat outputFormatter = new SimpleDateFormat("yyyy-MM-dd");
+		List<Long> branchIds = new ArrayList<Long>();
+		List<Branch> branches = new ArrayList<Branch>();
+		branches = branchService.getAllBranches();
+		String from = outputFormatter.format(date.get(0));
+		String to = outputFormatter.format(date.get(1));
+		if(branchId == 0) {
+			for(int i = 0; i < branches.size(); i++)
+				branchIds.add(branches.get(i).getBranchId());
+		}
+		else {
+			branchIds.add(branchId);
+		}
+		List<?> badDebts = installmentService.getBadDebts(branchIds, from, to);
+		return new ResponseEntity<List<?>>(badDebts, HttpStatus.OK);
+	}
 }

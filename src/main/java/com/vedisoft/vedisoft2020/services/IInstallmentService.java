@@ -19,4 +19,5 @@ public interface IInstallmentService {
 	List<?> getFacultyWiseCollection(String from, String to);
 	List<?> getCourseWiseCollection(List<Long> branches, String from, String to);
 	List<?> getBranchWiseStudents(List<Long> branches, String from, String to);
+	List<?> getBadDebts(List<Long> branches, String from, String to);
 }

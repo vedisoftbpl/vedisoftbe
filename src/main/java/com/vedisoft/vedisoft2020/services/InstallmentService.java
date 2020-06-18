@@ -87,4 +87,9 @@ public class InstallmentService implements IInstallmentService {
 		return iInstallmentDetailsDao.getBranchWiseStudents(branches, from, to);
 	}
 
+	@Override
+	public List<?> getBadDebts(List<Long> branches, String from, String to) {
+		return iInstallmentDetailsDao.getBadDebts(branches, from, to);
+	}
+
 }

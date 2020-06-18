@@ -70,4 +70,12 @@ public interface InstallmentJpaRepository extends JpaRepository<Installment, Int
 			"FROM student_batch INNER JOIN Student ON student_batch.student_id = Student.registration_id  " +
             "WHERE ((Student.branch_id IN :branches) AND (registration_date BETWEEN :from AND :to)) GROUP BY student_batch.batch_id", nativeQuery = true)
 	List<?> getBranchWiseStudents(@Param("branches")List<Long> branches, @Param("from")String from, @Param("to")String to);
+	
+	@Query(value = "SELECT student_batch.batch_id, ((SELECT COUNT(student_batch.sb_id) * (fees.famt) " + 
+			"FROM student_batch WHERE student_batch.batch_id = Fees.batch_id)  - (SELECT SUM(Installment.amt) " + 
+			"FROM Installment WHERE Installment.batch_id = Fees.batch_id)), Installment.branch_id " + 
+            "FROM ((Fees INNER JOIN student_batch ON Fees.batch_id = student_batch.batch_id) " +
+			"INNER JOIN Installment ON student_batch.batch_id = Installment.batch_id) " +
+            "WHERE ((Installment.branch_id IN :branches) AND (due_date BETWEEN :from AND :to)) GROUP BY student_batch.batch_id", nativeQuery = true)
+	List<?> getBadDebts(@Param("branches")List<Long> branches, @Param("from")String from, @Param("to")String to);
 }

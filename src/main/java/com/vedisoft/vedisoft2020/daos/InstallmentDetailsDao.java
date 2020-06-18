@@ -97,4 +97,9 @@ public class InstallmentDetailsDao implements IInstallmentDetailsDao {
 		return installmentJpaRepository.getBranchWiseStudents(branches, from, to);
 	}
 
+	@Override
+	public List<?> getBadDebts(List<Long> branches, String from, String to) {
+		return installmentJpaRepository.getBadDebts(branches, from, to);
+	}
+
 }
