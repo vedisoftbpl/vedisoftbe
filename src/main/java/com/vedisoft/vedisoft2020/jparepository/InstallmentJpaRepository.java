@@ -83,4 +83,11 @@ public interface InstallmentJpaRepository extends JpaRepository<Installment, Int
 			"INNER JOIN Installment ON student_batch.batch_id = Installment.batch_id) " +
             "WHERE ((Installment.branch_id IN :branches) AND (due_date BETWEEN :from AND :to)) GROUP BY student_batch.batch_id", nativeQuery = true)
 	List<?> getBadDebts(@Param("branches")List<Long> branches, @Param("from")String from, @Param("to")String to);
+	
+	@Query(value = "SELECT SUM(amt) "
+			+ 
+            "FROM Installment INNER JOIN Student " +
+			"ON Installment.reg_no = Student.registration_id " +
+            "WHERE Installment.batch_id = :batchId AND Installment.reg_no = :regId", nativeQuery = true)
+	List<?> getTotalBalance(@Param("batchId")int batchId, @Param("regId")int regId);
 }
