@@ -29,7 +29,7 @@ public class UserDetailsDao implements IUserDetailsDao {
 			activePersonDetails = (Person)list.get(0);
 		}
 
-		System.out.println(activePersonDetails.getUsername());
+		//System.out.println(activePersonDetails.getUsername());
 		
 		return activePersonDetails;
 

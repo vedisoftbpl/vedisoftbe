@@ -15,6 +15,11 @@ import com.vedisoft.vedisoft2020.pojos.Installment;
 public interface InstallmentJpaRepository extends JpaRepository<Installment, Integer> {
 	List<Installment> findInstallmentByBranchBranchId(long branchId);
 	
+	@Query(value = "SELECT SUM(amt)"+
+	" FROM Installment i WHERE i.reg_no =: regNo"+
+			" AND i.batch_id =: batchId",nativeQuery = true)
+	Float getStudentInstallments(@Param("regNo") long registrationNo, @Param("batchId") long batch_id);
+	
 	@Query(value = "SELECT SUM(i.sgst) "
 			+ 
             "FROM Installment i " +

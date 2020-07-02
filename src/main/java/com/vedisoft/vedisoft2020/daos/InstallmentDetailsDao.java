@@ -61,6 +61,14 @@ public class InstallmentDetailsDao implements IInstallmentDetailsDao {
 		totalGST.add(1, installmentJpaRepository.getSGST(dateFrom, dateTo));
 		return totalGST;
 	}
+	
+	@Override
+	public List<Float> getBalance(long regNo, long batchId){
+		List<Float> totalBalance = new ArrayList<Float>();
+		totalBalance.add(installmentJpaRepository.getStudentInstallments(regNo, batchId));
+		totalBalance.add(installmentJpaRepository.getStudentInstallments(regNo, batchId));
+		return totalBalance;
+	}
 
 	@Override
 	public List<?> getDayBook(String date, int branchId) {

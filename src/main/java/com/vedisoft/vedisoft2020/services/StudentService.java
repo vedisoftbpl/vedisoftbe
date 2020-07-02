@@ -3,6 +3,7 @@ package com.vedisoft.vedisoft2020.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import com.vedisoft.vedisoft2020.daos.IStudentDetailsDao;
@@ -41,6 +42,12 @@ public class StudentService implements IStudentService {
 	@Override
 	public List<?> getStudentsByCollege(String startDate, String endDate, int branchId) {
 		return iStudentDetailsDao.getStudentsByCollege(startDate, endDate, branchId);
+	}
+
+	@Override
+	public List<String> loadImages(String filename) {
+		// TODO Auto-generated method stub
+		return iStudentDetailsDao.loadImage(filename);
 	}
 
 }

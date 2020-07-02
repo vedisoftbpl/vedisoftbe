@@ -92,4 +92,10 @@ public class InstallmentService implements IInstallmentService {
 		return iInstallmentDetailsDao.getBadDebts(branches, from, to);
 	}
 
+	@Override
+	public List<Float> getTotalBalance(long regNo, long batchId) {
+		// TODO Auto-generated method stub
+		return iInstallmentDetailsDao.getBalance(regNo, batchId);
+	}
+
 }

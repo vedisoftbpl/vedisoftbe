@@ -2,6 +2,8 @@ package com.vedisoft.vedisoft2020.services;
 
 import java.util.List;
 
+import org.springframework.core.io.Resource;
+
 import com.vedisoft.vedisoft2020.pojos.Student;
 
 public interface IStudentService {
@@ -10,4 +12,5 @@ public interface IStudentService {
 	Student createStudent(Student student);
 	Student removeStudent(int id);
 	List<?> getStudentsByCollege(String startDate, String endDate, int branchId);
+	List<String> loadImages(String filename);
 }

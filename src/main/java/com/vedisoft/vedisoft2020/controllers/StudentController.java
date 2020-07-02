@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -53,6 +54,14 @@ public class StudentController {
 //		Branch branch = branchJpaRepository.findById(id).get();
 		Student student = studentService.getStudentById(id);
 		return new ResponseEntity<Student>(student, HttpStatus.OK);
+	}
+	@GetMapping("/student/getImage/{imageName}")
+	public ResponseEntity<List<String>> getImage(@PathVariable("imageName") String imageName){
+		List<String> list ;
+		list= studentService.loadImages(imageName);
+		//System.out.println("Image Bytes = "+image);
+		
+		return new ResponseEntity<List<String>>(list,HttpStatus.OK);
 	}
 	
 	//for adding the new branch

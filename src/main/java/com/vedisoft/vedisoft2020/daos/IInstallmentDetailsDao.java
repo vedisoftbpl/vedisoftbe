@@ -12,6 +12,7 @@ public interface IInstallmentDetailsDao {
 	Installment removeInstallment(int id);
 	List<Installment> getByBranchId(long branchId);
 	List<Float> getTotalGST(String dateFrom, String dateTo);
+	List<Float> getBalance(long regNo, long batchId);
 	List<?> getDayBook(String date, int branchId);
 	List<?> getBatchWiseCollection(int batchId);
 	List<?> getSessionWiseCollection(int sessionId);

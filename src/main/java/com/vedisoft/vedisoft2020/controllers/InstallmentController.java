@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.vedisoft.vedisoft2020.daos.BatchDetailsDao;
+import com.vedisoft.vedisoft2020.daos.IUserDetailsDao;
 import com.vedisoft.vedisoft2020.pojos.Batch;
 import com.vedisoft.vedisoft2020.pojos.Branch;
 import com.vedisoft.vedisoft2020.pojos.Installment;
@@ -37,6 +38,8 @@ public class InstallmentController {
 	private IBranchService branchService;
 	@Autowired
 	private BatchDetailsDao batchDetails;
+	@Autowired
+	private IUserDetailsDao userDeatils;
 	
 //	@Autowired
 //	private BranchJpaRepository branchJpaRepository;
@@ -57,8 +60,9 @@ public class InstallmentController {
 	}
 	
 	
-	@PostMapping("/installment/formSubmit")
-	public ResponseEntity<Void> createInstallment(@RequestBody Installment installment){
+	@PostMapping("/installment/formSubmit/{username}")
+	public ResponseEntity<Void> createInstallment(@PathVariable String username ,@RequestBody Installment installment){
+		installment.setPerson(userDeatils.getActiveUser(username));
 		Batch batch =  batchDetails.getBatchById(installment.getBatch().getBatchId());
 		installment.setBranch(batch.getBranch());
 		Installment createdInstallment = installmentService.createInstallment(installment);
@@ -77,6 +81,13 @@ public class InstallmentController {
 		List<Installment> installment = installmentService.getByBranchId(id);
 		return new ResponseEntity<List<Installment>>(installment, HttpStatus.OK);
 	}
+	
+	@GetMapping("/installment/studentBalance/{regNo}/{batchId}")
+	public ResponseEntity<List<Float>> getTotalBalance(@PathVariable("regNo") long registrationNo, @PathVariable("batchId") long batchId){
+		List<Float> balance = installmentService.getTotalBalance(registrationNo, batchId);
+		return new ResponseEntity<List<Float>>(balance, HttpStatus.OK);
+	}
+	
 	@PostMapping("/reports/gst")
 	public ResponseEntity<List<Float>> getTotalGST(@RequestBody List<Date> dates) {
 		Date dateFrom, dateTo;
