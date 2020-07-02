@@ -9,5 +9,5 @@ import com.vedisoft.vedisoft2020.pojos.StudentBatch;
 
 @Repository
 public interface StudentBatchJpaRepository extends JpaRepository<StudentBatch, Long> {
-	List<StudentBatch> findStudentBatchByBatchBatchId(long batchId);
+	List<StudentBatch> findStudentBatchByStudentId(long studentId);
 }
