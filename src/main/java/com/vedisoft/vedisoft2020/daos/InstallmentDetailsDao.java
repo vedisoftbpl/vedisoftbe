@@ -63,11 +63,8 @@ public class InstallmentDetailsDao implements IInstallmentDetailsDao {
 	}
 	
 	@Override
-	public List<Float> getBalance(long regNo, long batchId){
-		List<Float> totalBalance = new ArrayList<Float>();
-		totalBalance.add(installmentJpaRepository.getStudentInstallments(regNo, batchId));
-		totalBalance.add(installmentJpaRepository.getStudentInstallments(regNo, batchId));
-		return totalBalance;
+	public List<?> getBalance(int regNo, int batchId){
+		return installmentJpaRepository.getTotalBalance(batchId, regNo);
 	}
 
 	@Override
@@ -109,5 +106,11 @@ public class InstallmentDetailsDao implements IInstallmentDetailsDao {
 	public List<?> getBadDebts(List<Long> branches, String from, String to) {
 		return installmentJpaRepository.getBadDebts(branches, from, to);
 	}
+
+//	@Override
+//	public List<?> getAmountPaid(long registrationNo, long batchId) {
+//		// TODO Auto-generated method stub
+//		return installmentJpaRepository.getStudentInstallments(registrationNo, batchId);
+//	}
 
 }

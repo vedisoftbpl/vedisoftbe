@@ -38,4 +38,10 @@ public class StudentBatchService implements IStudentBatchService {
 		return iStudentBatchDetailsDao.removeStudentBatchById(studentBatchId);
 	}
 
+	@Override
+	public List<StudentBatch> getStudentBatchByStudentId(String studentId) {
+		// TODO Auto-generated method stub
+		return iStudentBatchDetailsDao.getStudentBatchByStudentId(studentId);
+	}
+
 }

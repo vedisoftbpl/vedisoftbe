@@ -9,5 +9,5 @@ public interface IStudentBatchService {
 	StudentBatch getStudentBatchById(int studentBatchId);
 	StudentBatch createStudentBatch(StudentBatch studentBatch);
 	StudentBatch removeStudentBatchById(int studentBatchId);
-
+	List<StudentBatch> getStudentBatchByStudentId(String studentId);
 }

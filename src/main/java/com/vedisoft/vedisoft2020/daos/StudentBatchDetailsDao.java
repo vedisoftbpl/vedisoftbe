@@ -53,4 +53,10 @@ public class StudentBatchDetailsDao implements IStudentBatchDetailsDao {
 		return studentBatch;
 	}
 
+	@Override
+	public List<StudentBatch> getStudentBatchByStudentId(String studentId) {
+		// TODO Auto-generated method stub
+		return studentBatchJpaRepository.findStudentBatchByStudentId(studentId);
+	}
+
 }

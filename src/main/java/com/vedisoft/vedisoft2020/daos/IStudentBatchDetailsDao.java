@@ -9,5 +9,5 @@ public interface IStudentBatchDetailsDao {
 	StudentBatch getStudentBatchById(long studentBatchId);
 	StudentBatch createStudentBatch(StudentBatch studentBatch);
 	StudentBatch removeStudentBatchById(long studentBatchId);
-
+	List<StudentBatch> getStudentBatchByStudentId(String studentId);
 }

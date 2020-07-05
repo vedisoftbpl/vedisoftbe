@@ -60,4 +60,10 @@ public class StudentBatchController {
 		StudentBatch studentBatchEdited = studentBatchService.createStudentBatch(studentBatch);
 		return new ResponseEntity<StudentBatch>(studentBatchEdited, HttpStatus.OK);
 	}
+	
+	@GetMapping("/studentBatch/getBatches/{studentId}")
+	public ResponseEntity<List<StudentBatch>> getStudentBatchByStudentId(@PathVariable String studentId){
+		List<StudentBatch> list = studentBatchService.getStudentBatchByStudentId(studentId);
+		return new ResponseEntity<List<StudentBatch>>(list, HttpStatus.OK);
+	}
 }

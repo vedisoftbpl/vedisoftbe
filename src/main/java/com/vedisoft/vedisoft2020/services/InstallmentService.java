@@ -93,7 +93,7 @@ public class InstallmentService implements IInstallmentService {
 	}
 
 	@Override
-	public List<Float> getTotalBalance(long regNo, long batchId) {
+	public List<?> getTotalBalance(int regNo, int batchId) {
 		// TODO Auto-generated method stub
 		return iInstallmentDetailsDao.getBalance(regNo, batchId);
 	}

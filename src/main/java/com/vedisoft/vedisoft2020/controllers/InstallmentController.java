@@ -83,10 +83,12 @@ public class InstallmentController {
 	}
 	
 	@GetMapping("/installment/studentBalance/{regNo}/{batchId}")
-	public ResponseEntity<List<Float>> getTotalBalance(@PathVariable("regNo") long registrationNo, @PathVariable("batchId") long batchId){
-		List<Float> balance = installmentService.getTotalBalance(registrationNo, batchId);
-		return new ResponseEntity<List<Float>>(balance, HttpStatus.OK);
+	public ResponseEntity<List<?>> getTotalBalance(@PathVariable("regNo") int registrationNo, @PathVariable("batchId") int batchId){
+		List<?> balance = installmentService.getTotalBalance(registrationNo, batchId);
+		return new ResponseEntity<List<?>>(balance, HttpStatus.OK);
 	}
+	
+	
 	
 	@PostMapping("/reports/gst")
 	public ResponseEntity<List<Float>> getTotalGST(@RequestBody List<Date> dates) {

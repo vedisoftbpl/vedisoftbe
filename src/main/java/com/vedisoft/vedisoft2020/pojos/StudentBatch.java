@@ -50,8 +50,9 @@ public class StudentBatch implements Serializable {
 	@Column(name="student_id", length=200)
 	private String studentId;
 
-	//bi-directional one-to-one association to Batch
-	@OneToOne(mappedBy="studentBatch")
+	//bi-directional many-to-one association to Batch
+	@ManyToOne
+	@JoinColumn(name="batch_id")
 	private Batch batch;
 
 	public StudentBatch() {

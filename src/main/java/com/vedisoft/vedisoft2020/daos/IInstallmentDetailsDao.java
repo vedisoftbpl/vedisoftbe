@@ -12,7 +12,7 @@ public interface IInstallmentDetailsDao {
 	Installment removeInstallment(int id);
 	List<Installment> getByBranchId(long branchId);
 	List<Float> getTotalGST(String dateFrom, String dateTo);
-	List<Float> getBalance(long regNo, long batchId);
+	List<?> getBalance(int regNo, int batchId);
 	List<?> getDayBook(String date, int branchId);
 	List<?> getBatchWiseCollection(int batchId);
 	List<?> getSessionWiseCollection(int sessionId);
@@ -21,4 +21,5 @@ public interface IInstallmentDetailsDao {
 	List<?> getCourseWiseCollection(List<Long> branches, String from, String to);
 	List<?> getBranchWiseStudents(List<Long> branches, String from, String to);
 	List<?> getBadDebts(List<Long> branches, String from, String to);
+//	List<?> getAmountPaid(long registrationNo , long batchId);
 }
